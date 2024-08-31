@@ -35,7 +35,7 @@
                                         <button type="submit" class="btn btn-primary">Login</button>
                                     </p>
                                     <p class="text-end">
-                                        <a href="#" class="text-danger">Forget Password?</a>
+                                        <a href="./forgetpassword.php" class="text-danger">Forget Password?</a>
                                     </p>
                                     <p class="text-end">
                                     If not registered, <a href="register.php">Register here</a>
