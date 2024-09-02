@@ -1,3 +1,9 @@
+<?php
+include('../db_functions.php');
+if(isset($_POST['full_name'])){
+    $res=insert_data('users',$_POST,$_FILES);
+}
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -18,35 +24,44 @@
                                 <img src="http://localhost/core-php/photogram/assets/imgs/register_left_image.jpg" class="img-fluid rounded" />
                             </div>
                             <div class="col-7">
-                                <form>
+                                <?php
+                                    if(isset($res) && $res==true){
+                                        echo '<p class="alert alert-success">Thank you</p>';
+                                    }
+
+                                    if(isset($res) && $res==false){
+                                        echo '<p class="alert alert-danger">Oops... Something went wrong</p>';
+                                    }
+                                ?>
+                                <form method="post" action="" enctype="multipart/form-data">
                                     <div class="row mb-3">
-                                        <label for="full_name" class="col-sm-2 col-form-label">Full Name</label>
+                                        <label for="full_name" class="col-sm-2 col-form-label">Full Name<span class="text-danger">*</span></label>
                                         <div class="col-sm-10">
-                                            <input type="text" class="form-control" id="full_name">
+                                            <input type="text" class="form-control" name="full_name" id="full_name" required>
                                         </div>
                                     </div>
                                     <div class="row mb-3">
-                                        <label for="mobile" class="col-sm-2 col-form-label">Mobile</label>
+                                        <label for="mobile" class="col-sm-2 col-form-label">Mobile<span class="text-danger">*</span></label>
                                         <div class="col-sm-10">
-                                            <input type="number" class="form-control" id="mobile">
+                                            <input type="number" class="form-control" name="mobile" id="mobile" required>
                                         </div>
                                     </div>
                                     <div class="row mb-3">
-                                        <label for="passcode" class="col-sm-2 col-form-label">Passcode</label>
+                                        <label for="passcode" class="col-sm-2 col-form-label">Passcode<span class="text-danger">*</span></label>
                                         <div class="col-sm-10">
-                                            <input type="password" class="form-control" id="passcode">
+                                            <input type="password" class="form-control" name="password" id="passcode" required>
                                         </div>
                                     </div>
                                     <div class="row mb-3">
-                                        <label for="image" class="col-sm-2 col-form-label">Image</label>
+                                        <label for="image" class="col-sm-2 col-form-label">Image<span class="text-danger">*</span></label>
                                         <div class="col-sm-10">
-                                            <input type="file" class="form-control" id="image">
+                                            <input type="file" class="form-control" name="image" id="image" required>
                                         </div>
                                     </div>
                                     <div class="row mb-3">
-                                        <label for="interestedIn" class="col-sm-2 col-form-label">Interested</label>
+                                        <label for="interestedIn" class="col-sm-2 col-form-label">Interested<span class="text-danger">*</span></label>
                                         <div class="col-sm-10">
-                                            <select class="form-control" id="interestedIn">
+                                            <select class="form-control" id="interestedIn" required name="interested">
                                                 <option value="animals">Animals</option>
                                                 <option value="nature">Nature</option>
                                                 <option value="sports">Sports</option>
