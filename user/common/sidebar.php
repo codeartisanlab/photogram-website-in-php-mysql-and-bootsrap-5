@@ -31,7 +31,7 @@
                             Followings
                             <span class="badge text-bg-primary rounded-pill">2.5K</span>
                         </a>
-                        <a href="#" class="list-group-item d-flex justify-content-between align-items-center text-danger">
+                        <a href="logout.php" class="list-group-item d-flex justify-content-between align-items-center text-danger">
                             Logout
                         </a>
                     </div>

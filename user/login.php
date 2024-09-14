@@ -1,3 +1,10 @@
+<?php
+include('../db_functions.php');
+$res='';
+if(isset($_POST['mobile'])){
+    $res=user_login('users',$_POST);
+}
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -18,17 +25,25 @@
                                 <img src="http://localhost/core-php/photogram/assets/imgs/register_left_image.jpg" class="img-fluid rounded" />
                             </div>
                             <div class="col-7">
-                                <form>
+                            <?php
+                                if($res===false){
+                                    echo '<p class="alert alert-danger">Invalid mobile/password!!</p>';
+                                }
+                                if($res===true){
+                                    header("location:profile.php");
+                                }
+                            ?>
+                                <form method="post">
                                     <div class="row mb-3">
                                         <label for="mobile" class="col-sm-2 col-form-label">Mobile</label>
                                         <div class="col-sm-10">
-                                            <input type="number" class="form-control" id="mobile">
+                                            <input name="mobile" type="number" class="form-control" id="mobile">
                                         </div>
                                     </div>
                                     <div class="row mb-3">
                                         <label for="passcode" class="col-sm-2 col-form-label">Passcode</label>
                                         <div class="col-sm-10">
-                                            <input type="password" class="form-control" id="passcode">
+                                            <input name="password" type="password" class="form-control" id="passcode">
                                         </div>
                                     </div>
                                     <p class="text-end">

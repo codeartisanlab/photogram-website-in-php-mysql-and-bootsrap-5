@@ -1,4 +1,5 @@
 <?php
+session_start();
 include('functions.php');
 $mysqli=mysqli_connect("localhost","root","","photogram");
 if(!$conn){
@@ -31,6 +32,23 @@ function insert_data($table,$data_array,$file_array){
 		return true;
 	}else{
 		return false;
+	}
+}
+
+function user_login($table,$data_array){
+	global $mysqli;
+	$mobile=$data_array['mobile'];
+	$pwd=sha1($data_array['password']);
+
+	$query="SELECT * FROM $table WHERE mobile='$mobile' AND password='$pwd'";
+	$result=mysqli_query($mysqli,$query);
+	$totalResult=mysqli_num_rows($result);
+	if($totalResult  == 0){
+		return false;
+	}else{
+		$_SESSION['user']=true;
+		$_SESSION['mobile']=$mobile;
+		return true;
 	}
 }
 
