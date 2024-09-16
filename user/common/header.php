@@ -1,3 +1,9 @@
+<?php
+include('../db_functions.php');
+if(!isset($_SESSION['user'])){
+    header("location:login.php");
+}
+?>
 <!doctype html>
 <html lang="en">
     <head>
@@ -18,10 +24,9 @@
                     <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav ms-auto">
                             <li class="nav-item">
-                                <a class="nav-link" href="#"><i class="fa-regular fa-image"></i> Photos</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#"><i class="fa-solid fa-video"></i> Videos</a>
+                                <a class="nav-link" href="../user/my_creations.php">
+                                    <i class="fa-solid fa-list"></i> My Creations
+                                </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-warning" href="./create.php"><i class="fa-solid fa-square-plus"></i> Create</a>

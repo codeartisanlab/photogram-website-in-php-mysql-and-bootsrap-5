@@ -46,10 +46,52 @@ function user_login($table,$data_array){
 	if($totalResult  == 0){
 		return false;
 	}else{
+		$row=mysqli_fetch_assoc($result);
 		$_SESSION['user']=true;
 		$_SESSION['mobile']=$mobile;
+		$_SESSION['user_id']=$row['user_id'];
 		return true;
 	}
+}
+
+
+// Insert data in database
+function create_post($table,$data_array,$file_array){
+	global $mysqli;
+	$userId=$_SESSION['user_id'];
+	$post_content=$data_array['content'];
+	$tmpImage=$file_array['file']['tmp_name'];
+	$image=$file_array['file']['name'];
+
+
+	if(!move_uploaded_file($tmpImage, '../assets/imgs/'.$image)){
+		_t('not uploaded');
+		die;
+	}
+
+	$query="INSERT INTO $table (user_id,post_content,post_upload) VALUES ('$userId','$post_content','$image')";
+	$result=mysqli_query($mysqli,$query);
+	$affectedRows=mysqli_affected_rows($mysqli);
+	if($affectedRows>0){
+		return true;
+	}else{
+		return false;
+	}
+}
+
+function user_posts(){
+	global $mysqli;
+	$user_id=$_SESSION['user_id'];
+	$query="SELECT * FROM posts WHERE user_id='$user_id'";
+	$result=mysqli_query($mysqli,$query);
+	$totalResult=mysqli_num_rows($result);
+	if($totalResult>0){
+		$data=mysqli_fetch_all($result,MYSQLI_ASSOC);
+		return $data;
+	}else{
+		return false;
+	}
+	
 }
 
 

@@ -1,9 +1,3 @@
-<?php
-include('../db_functions.php');
-if(!isset($_SESSION['user'])){
-    header("location:login.php");
-}
-?>
 <?php include('common/header.php'); ?>
 <section class="container my-4">
     <div class="row">
