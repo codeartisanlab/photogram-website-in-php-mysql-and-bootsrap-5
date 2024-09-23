@@ -50,6 +50,9 @@ function user_login($table,$data_array){
 		$_SESSION['user']=true;
 		$_SESSION['mobile']=$mobile;
 		$_SESSION['user_id']=$row['user_id'];
+		$_SESSION['bio']=$row['bio'];
+		$_SESSION['image']=$row['image'];
+		$_SESSION['full_name']=$row['full_name'];
 		return true;
 	}
 }

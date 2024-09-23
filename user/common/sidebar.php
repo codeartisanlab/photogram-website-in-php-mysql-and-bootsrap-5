@@ -2,12 +2,12 @@
             <div class="card mb-3">
                 <div class="row g-0">
                     <div class="col-md-5">
-                        <img src="http://localhost/core-php/photogram/assets/imgs/register_left_image.jpg" class="img-fluid rounded-start" alt="my photo">
+                        <img src="http://localhost/core-php/photogram_dynamic/user/<?php echo $_SESSION['image']; ?>" class="img-fluid rounded-start" alt="my photo">
                     </div>
                     <div class="col-md-7">
                         <div class="card-body">
-                            <h6 class="m-0">Code Artisan Lab <i class="fa-solid fa-circle-check text-success"></i></h6>
-                            <small>Programming Institute</small>
+                            <h6 class="m-0"><?php echo $_SESSION['full_name']; ?> <i class="fa-solid fa-circle-check text-success"></i></h6>
+                            <small><?php echo $_SESSION['bio']; ?></small>
                         </div>
                     </div>
                 </div>
