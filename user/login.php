@@ -30,7 +30,7 @@ if(isset($_POST['mobile'])){
                                     echo '<p class="alert alert-danger">Invalid mobile/password!!</p>';
                                 }
                                 if($res===true){
-                                    header("location:profile.php");
+                                    header("location:timeline.php");
                                 }
                             ?>
                                 <form method="post">

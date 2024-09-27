@@ -53,6 +53,7 @@ function user_login($table,$data_array){
 		$_SESSION['bio']=$row['bio'];
 		$_SESSION['image']=$row['image'];
 		$_SESSION['full_name']=$row['full_name'];
+		$_SESSION['my_interest']=$row['interested_in'];
 		return true;
 	}
 }

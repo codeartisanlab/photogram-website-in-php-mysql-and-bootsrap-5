@@ -68,7 +68,7 @@ if($totalRows > 0){
                                 <?php
                                     if($userExit==true){
                                         echo '<input type="hidden" name="oldimg" value="'.$userData['image'].'" />';
-                                        echo '<img src="'.$userData['image'].'" width="150" class="border mt-2" />';
+                                        echo '<img src="../assets/imgs/'.$userData['image'].'" width="150" class="border mt-2" />';
                                     }
                                 ?>
                             </div>

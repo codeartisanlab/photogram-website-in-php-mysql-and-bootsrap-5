@@ -1,117 +1,44 @@
         <?php include('common/header.php'); ?>
+
+        <?php
+            $myInterest=$_SESSION['my_interest'];
+            $myUserId=$_SESSION['user_id'];
+            $query="SELECT * FROM users WHERE interested_in='$myInterest' AND user_id!='$myUserId'";
+            $result=mysqli_query($mysqli,$query);
+            $totalRows=mysqli_num_rows($result);
+            if($totalRows > 0){
+                $users=mysqli_fetch_all($result,MYSQLI_ASSOC);
+            }else{
+                $users='';
+            }
+        ?>
+
         <section class="container my-4">
             <div class="row">
                 <?php include('common/sidebar.php'); ?>
                 <div class="col-md-9">
                     <div class="row">
-                        <div class="col-sm-6 col-12 mb-4">
-                            <div class="card">
-                                <img src="http://localhost/core-php/photogram/assets/imgs/register_left_image.jpg" class="card-img-top" alt="my-content">
-                                <div class="card-body">
-                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                </div>
-                                <div class="card-footer">
-                                    <div class="d-flex justify-content-between">
-                                        <div>
-                                            <i class="fa-solid fa-heart text-danger"></i> 8.5k
-                                        </div>
-                                        <div>
-                                            <i class="fa-solid fa-comment text-primary"></i> 18.5k
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-12 mb-4">
-                            <div class="card">
-                                <img src="http://localhost/core-php/photogram/assets/imgs/register_left_image.jpg" class="card-img-top" alt="my-content">
-                                <div class="card-body">
-                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                </div>
-                                <div class="card-footer">
-                                    <div class="d-flex justify-content-between">
-                                        <div>
-                                            <i class="fa-solid fa-heart text-danger"></i> 8.5k
-                                        </div>
-                                        <div>
-                                            <i class="fa-solid fa-comment text-primary"></i> 18.5k
+                        <?php
+                            if($users!=''){
+                                foreach($users as $user){
+                                    ?>
+                                    <div class="col-sm-4 col-12 mb-4">
+                                        <div class="card">
+                                            <img src="../assets/imgs/<?php echo $user['image']; ?>" class="card-img-top" alt="my-content">
+                                            <div class="card-body">
+                                                <p class="card-text mb-0"><?php echo $user['bio']; ?></p>
+                                                <span class="badge bg-info text-dark mt-1"><?php echo $user['interested_in']; ?></span>
+                                            </div>
+                                            <div class="card-footer">
+                                                <button class="btn btn-dark bg-gradient btn-sm"><i class="fa fa-plus"></i> Follow Me</button>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-12 mb-4">
-                            <div class="card">
-                                <img src="http://localhost/core-php/photogram/assets/imgs/register_left_image.jpg" class="card-img-top" alt="my-content">
-                                <div class="card-body">
-                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                </div>
-                                <div class="card-footer">
-                                    <div class="d-flex justify-content-between">
-                                        <div>
-                                            <i class="fa-solid fa-heart text-danger"></i> 8.5k
-                                        </div>
-                                        <div>
-                                            <i class="fa-solid fa-comment text-primary"></i> 18.5k
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-12 mb-4">
-                            <div class="card">
-                                <img src="http://localhost/core-php/photogram/assets/imgs/register_left_image.jpg" class="card-img-top" alt="my-content">
-                                <div class="card-body">
-                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                </div>
-                                <div class="card-footer">
-                                    <div class="d-flex justify-content-between">
-                                        <div>
-                                            <i class="fa-solid fa-heart text-danger"></i> 8.5k
-                                        </div>
-                                        <div>
-                                            <i class="fa-solid fa-comment text-primary"></i> 18.5k
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-12 mb-4">
-                            <div class="card">
-                                <img src="http://localhost/core-php/photogram/assets/imgs/register_left_image.jpg" class="card-img-top" alt="my-content">
-                                <div class="card-body">
-                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                </div>
-                                <div class="card-footer">
-                                    <div class="d-flex justify-content-between">
-                                        <div>
-                                            <i class="fa-solid fa-heart text-danger"></i> 8.5k
-                                        </div>
-                                        <div>
-                                            <i class="fa-solid fa-comment text-primary"></i> 18.5k
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-12 mb-4">
-                            <div class="card">
-                                <img src="http://localhost/core-php/photogram/assets/imgs/register_left_image.jpg" class="card-img-top" alt="my-content">
-                                <div class="card-body">
-                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                </div>
-                                <div class="card-footer">
-                                    <div class="d-flex justify-content-between">
-                                        <div>
-                                            <i class="fa-solid fa-heart text-danger"></i> 8.5k
-                                        </div>
-                                        <div>
-                                            <i class="fa-solid fa-comment text-primary"></i> 18.5k
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                                    <?php
+                                }
+                            }
+                        ?>
+                        
                     </div>
 
                     <!-- Load More -->
