@@ -18,6 +18,9 @@
                         <a href="./my_creations.php" class="list-group-item d-flex justify-content-between align-items-center">
                             Profile
                         </a>
+                        <a href="./suggestions.php" class="list-group-item d-flex justify-content-between align-items-center">
+                            Suggestion
+                        </a>
                         <a href="./timeline.php" class="list-group-item d-flex justify-content-between align-items-center">
                             Timeline
                         </a>
