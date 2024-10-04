@@ -1,3 +1,10 @@
+<?php
+// Fetch Followers count
+$myId=$_SESSION['user_id'];
+$query="SELECT * FROM followers WHERE follower_id='$myId'";
+$result=mysqli_query($mysqli,$query);
+$numRows=mysqli_num_rows($result);
+?>
 <div class="col-md-3 mb-3">
             <div class="card mb-3">
                 <div class="row g-0">
@@ -29,7 +36,11 @@
                         </a>
                         <a href="./followers.php" class="list-group-item d-flex justify-content-between align-items-center">
                             Followers
-                            <span class="badge text-bg-primary rounded-pill">2.5M</span>
+                            <span class="badge text-bg-primary rounded-pill">
+                                <?php
+                                    echo $numRows;
+                                ?>
+                            </span>
                         </a>
                         <a href="./followings.php" class="list-group-item d-flex justify-content-between align-items-center">
                             Followings
